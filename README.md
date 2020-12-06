@@ -1,7 +1,10 @@
 # ADM-HW3
 
-![alt text](https://camo.githubusercontent.com/406644a4e60cd793ef853c47ee30ec2206f3b87081731fb80976824b56417a41/68747470733a2f2f73323938322e7063646e2e636f2f77702d636f6e74656e742f75706c6f6164732f323031352f31322f676f6f6472656164732d65313435373535353432343738302e6a70672e6f7074696d616c2e6a7067)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/MirkoLozzi/ADM-HW3/main/goodreads_logo.jpg" />
+</p>
 
+  
 #### **Description of the tasks**
 
 In this homework we build a dataset from scratch by collecting information about books from [goodreads](https://www.goodreads.com/), site for readers and book recommendations.
@@ -9,8 +12,19 @@ We downloaded the url’s connetted to the first 300 pages of the most loved boo
 This Information was then parsed to mantain only what was relevant to us, such as book title, author name, and plot. Then , it was saved in a unique tsv file ```Books.tsv```.
 You can retrieve the code to perform this task in the python notebook ```Download_and_parsing.ipynb```.
 
-We build two different search engines wich retrives the books title, plot and links of the documents that contain the input query of the user. The first one gives us the documents that contain all the words in the input query,  while the second search engine will retrive the top-k documents sorted by the cosine similarity evaluated over TF-IDF.
+We build two different search engines wich retrives the books title, plot and links of the documents that contain the input query of the user. The first one gives us the documents that contain all the words in the input query, while the second search engine will retrive the top-k documents sorted by the cosine similarity evaluated over TF-IDF.
 
+One of the task that we had was to build a new score. We define a new quantity called Importance_score as shown below.
+
+<img src="https://render.githubusercontent.com/render/math?math=importance\_score_{doc_i} = \frac{ratevalue_{doc_i}\log(1+ratenumber_{doc_i})}{maxratevalue{docs}\log(1+maxratenumber{docs})}">
+
+where:
+* ratevalue = integer value between [0,5] 
+* ratenumber = number of rates for each document 
+* maxratevalue = max rate value among the documents found 
+* maxratenumber = max rate number among the documents found
+
+The final score is given by 30% Importance_score and 70% Similarity_score
 
 Also we studied the cumulative numer of page during time, of the top-10 book series in the catalogue.
 
